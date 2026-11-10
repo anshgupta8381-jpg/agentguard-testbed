@@ -1,0 +1,11 @@
+question,expected,top3,pass,top_score,seconds
+How many days of paid annual leave do we get?,leave_policy.md,"leave_policy.md, leave_policy.md, leave_policy.md",True,0.8377,0.02
+How many unused leave days can I carry forward?,leave_policy.md,"leave_policy.md, leave_policy.md, leave_policy.md",True,0.7145,11.53
+Can I work from home on Tuesdays?,employee_handbook.md,"employee_handbook.md, it_security_policy.md, leave_policy.md",True,0.7385,2.79
+What is the refund rule for monthly plans?,product_faq.md,"product_faq.md, expense_policy.md, product_faq.md",True,0.7952,0.01
+What is the hotel limit per night in metro cities?,expense_policy.md,"expense_policy.md, expense_policy.md, expense_policy.md",True,0.6796,0.01
+Is Diwali a holiday this year?,holiday_calendar_2026.md,"holiday_calendar_2026.md, leave_policy.md, product_faq.md",True,0.768,0.01
+Who is the HR manager?,team_directory.md,"hr_performance_review_notes.md, hr_performance_review_notes.md, employee_handbook.md",False,0.6611,2.72
+When is the Atlas design review?,project_atlas_notes.md,"project_atlas_notes.md, project_atlas_notes.md, project_atlas_notes.md",True,0.7754,2.78
+Do I need the VPN on public Wi-Fi?,it_security_policy.md,"it_security_policy.md, project_atlas_notes.md, it_security_policy.md",True,0.7127,0.01
+What is the band maximum for level L3?,hr_salary_bands_2026.md,"hr_salary_bands_2026.md, hr_salary_bands_2026.md, hr_salary_bands_2026.md",True,0.6354,0.01
