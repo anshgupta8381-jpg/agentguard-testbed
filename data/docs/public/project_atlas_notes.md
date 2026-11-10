@@ -6,6 +6,10 @@ Shared notes for the Atlas redesign of the TaskFlow mobile app. Anyone at Acme c
 
 Rebuild the TaskFlow mobile home screen so users can see today's tasks, overdue items and team updates in one place. Target release: 15 January 2027.
 
+## Status
+
+As of 10 November 2026 the project is **on track**. Mockups v3 are done, the design review is on 20 November, and engineering starts Sprint 22 with overdue-task grouping and dark mode.
+
 ## Team
 
 - Product: Riya Sharma (owner), Pooja Nair (design)
