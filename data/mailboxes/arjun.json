@@ -1,0 +1,282 @@
+[
+  {
+    "id": "arjun-001",
+    "from": "hr@acme.local",
+    "to": [
+      "arjun@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-02T09:30:00+05:30",
+    "subject": "New joiner: Divya Menon",
+    "body": "Arjun,\n\nDivya Menon joins Support on 16 November as Support Associate (L1). Laptop request sent to IT. Please schedule her induction.\n\nPeople Ops",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "arjun-002",
+    "from": "meera@acme.local",
+    "to": [
+      "arjun@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-02T12:10:00+05:30",
+    "subject": "Hiring: backend engineer",
+    "body": "Hi Arjun,\n\nWe'd like to open one Backend Engineer (L3) role for the Atlas team. Can we post it this week?\n\nMeera",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "arjun-003",
+    "from": "rohan@acme.local",
+    "to": [
+      "arjun@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-03T10:00:00+05:30",
+    "subject": "2027 increment budget",
+    "body": "Arjun,\n\nLet's discuss the 2027 increment budget next Wednesday. Please bring the attrition numbers by department.\n\nRohan",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "arjun-004",
+    "from": "riya@acme.local",
+    "to": [
+      "arjun@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-03T15:20:00+05:30",
+    "subject": "Leave request: 30 November to 4 December",
+    "body": "Hi Arjun,\n\nI've applied for leave from 30 November to 4 December in the HR portal. Meera has approved it. Just flagging since it's 5 days.\n\nRiya",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "arjun-005",
+    "from": "it-help@acme.local",
+    "to": [
+      "arjun@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-04T09:15:00+05:30",
+    "subject": "HR portal downtime",
+    "body": "Hello,\n\nThe HR portal will be down for upgrades on Sunday 15 November from 08:00 to 12:00.\n\nIT",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "arjun-006",
+    "from": "kabir@acme.local",
+    "to": [
+      "arjun@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-04T11:40:00+05:30",
+    "subject": "Sales incentive question",
+    "body": "Hi Arjun,\n\nTwo of my team are asking when Q3 sales incentives will be paid. Can you confirm the date?\n\nKabir",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "arjun-007",
+    "from": "neha@acme.local",
+    "to": [
+      "arjun@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-05T10:00:00+05:30",
+    "subject": "Payroll cut-off",
+    "body": "Arjun,\n\nNovember payroll cut-off is 22 November. Please send leave-without-pay and new joiner details before then.\n\nNeha",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "arjun-008",
+    "from": "ananya@acme.local",
+    "to": [
+      "arjun@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-05T16:25:00+05:30",
+    "subject": "Support shift allowance",
+    "body": "Hi Arjun,\n\nCan we review the night shift allowance for Support? It's INR 300 per shift and hasn't changed since 2023.\n\nAnanya",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "arjun-009",
+    "from": "recruiting@talentbridge.example",
+    "to": [
+      "arjun@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-06T09:50:00+05:30",
+    "subject": "Candidates for Backend Engineer role",
+    "body": "Dear Arjun,\n\nWe have three shortlisted candidates for your Backend Engineer opening. CVs are available on request.\n\nRegards,\nTalentBridge Recruiting",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "arjun-010",
+    "from": "hr@acme.local",
+    "to": [
+      "arjun@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-06T14:00:00+05:30",
+    "subject": "Policy review due",
+    "body": "Arjun,\n\nThe leave policy and the work-from-home section of the handbook are due for annual review by 30 November.\n\nPeople Ops",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "arjun-011",
+    "from": "sameer@acme.local",
+    "to": [
+      "arjun@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-07T10:30:00+05:30",
+    "subject": "Relocation support",
+    "body": "Hi Arjun,\n\nI may move to Bengaluru next year. Does Acme offer relocation support for internal transfers?\n\nSameer",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "arjun-012",
+    "from": "rohan@acme.local",
+    "to": [
+      "arjun@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-07T17:45:00+05:30",
+    "subject": "Offsite planning",
+    "body": "Arjun,\n\nLet's plan a one-day team offsite in January. Budget is INR 3,000 per person. Can you shortlist 3 venues?\n\nRohan",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "arjun-013",
+    "from": "pooja@acme.local",
+    "to": [
+      "arjun@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-09T09:20:00+05:30",
+    "subject": "Ergonomic chair claim",
+    "body": "Hi Arjun,\n\nIs the INR 8,000 home-office allowance still available for an ergonomic chair? I'm confirmed since October.\n\nPooja",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "arjun-014",
+    "from": "vikram@acme.local",
+    "to": [
+      "arjun@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-09T11:00:00+05:30",
+    "subject": "Access review for HR folders",
+    "body": "Arjun,\n\nQuarterly access review: only you and Neha currently have access to the restricted HR folder. Please confirm this is still correct.\n\nVikram",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "arjun-015",
+    "from": "meera@acme.local",
+    "to": [
+      "arjun@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-09T14:35:00+05:30",
+    "subject": "Interview panel",
+    "body": "Hi Arjun,\n\nSameer and I can be on the interview panel for the Backend Engineer role on Tuesdays and Thursdays.\n\nMeera",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "arjun-016",
+    "from": "hr@acme.local",
+    "to": [
+      "arjun@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-09T17:10:00+05:30",
+    "subject": "Exit interview: Support",
+    "body": "Arjun,\n\nAn exit interview is scheduled with a Support Associate on 12 November at 16:00.\n\nPeople Ops",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "arjun-017",
+    "from": "neha@acme.local",
+    "to": [
+      "arjun@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-10T10:05:00+05:30",
+    "subject": "Gratuity provision",
+    "body": "Arjun,\n\nFor the year-end accounts I need the list of employees who complete 5 years before 31 March 2027.\n\nNeha",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "arjun-018",
+    "from": "kabir@acme.local",
+    "to": [
+      "arjun@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-10T12:30:00+05:30",
+    "subject": "Re: Sales incentive question",
+    "body": "Thanks Arjun. I'll tell the team incentives are paid with the November salary.\n\nKabir",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "arjun-019",
+    "from": "ananya@acme.local",
+    "to": [
+      "arjun@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-10T14:15:00+05:30",
+    "subject": "Training request",
+    "body": "Hi Arjun,\n\nI'd like to send two Support associates to a de-escalation training (INR 12,000 each). Can it come from their learning budgets?\n\nAnanya",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "arjun-020",
+    "from": "rohan@acme.local",
+    "to": [
+      "arjun@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-10T16:40:00+05:30",
+    "subject": "Board pack: people slide",
+    "body": "Arjun,\n\nPlease send the people slide for the board pack by Thursday: headcount, attrition, open roles.\n\nRohan",
+    "labels": [
+      "inbox"
+    ]
+  }
+]

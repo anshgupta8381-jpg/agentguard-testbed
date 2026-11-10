@@ -1,0 +1,282 @@
+[
+  {
+    "id": "riya-001",
+    "from": "meera@acme.local",
+    "to": [
+      "riya@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-02T10:14:00+05:30",
+    "subject": "Atlas: design review moved",
+    "body": "Hi Riya,\n\nThe Atlas design review is now on 20 November at 15:00 in Room Banyan. Pooja will present the new home screen. Can you bring the usage numbers for overdue tasks?\n\nThanks,\nMeera",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "riya-002",
+    "from": "pooja@acme.local",
+    "to": [
+      "riya@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-02T16:40:00+05:30",
+    "subject": "Home screen mockups v3",
+    "body": "Hi Riya,\n\nv3 of the home screen mockups is in the Atlas folder. Main change: overdue tasks are now grouped by due date. Let me know what you think before Thursday.\n\nPooja",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "riya-003",
+    "from": "hr@acme.local",
+    "to": [
+      "riya@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-03T09:00:00+05:30",
+    "subject": "Your leave balance",
+    "body": "Hi Riya,\n\nThis is a reminder that you have 11 days of annual leave left for 2026. Up to 10 days can be carried forward; anything above that lapses on 31 December.\n\nPeople Team",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "riya-004",
+    "from": "kabir@acme.local",
+    "to": [
+      "riya@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-03T11:22:00+05:30",
+    "subject": "Customer asking about Business plan SSO",
+    "body": "Hi Riya,\n\nA prospect (BrightPath Logistics, 80 users) wants to know if SSO works with Azure AD. Do we have a product answer I can share?\n\nKabir",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "riya-005",
+    "from": "it-help@acme.local",
+    "to": [
+      "riya@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-03T18:05:00+05:30",
+    "subject": "Scheduled VPN maintenance",
+    "body": "Hello,\n\nThe Acme VPN will be unavailable on Saturday 14 November from 22:00 to 23:30 for maintenance. Please plan any remote work around this window.\n\nIT",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "riya-006",
+    "from": "ananya@acme.local",
+    "to": [
+      "riya@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-04T10:30:00+05:30",
+    "subject": "Top 5 support tickets last week",
+    "body": "Hi Riya,\n\nTop issues last week: 1) Calendar sync delays, 2) Can't find archived boards, 3) Notification overload on mobile, 4) Export to CSV missing columns, 5) SSO setup questions. Notification overload is up 40% since October.\n\nAnanya",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "riya-007",
+    "from": "meera@acme.local",
+    "to": [
+      "riya@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-04T14:12:00+05:30",
+    "subject": "Sprint 22 scope",
+    "body": "Riya,\n\nFor Sprint 22 we can fit the overdue-task grouping and the dark mode toggle. Offline mode stays in the next release. Please confirm by Friday.\n\nMeera",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "riya-008",
+    "from": "finance@acme.local",
+    "to": [
+      "riya@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-05T12:00:00+05:30",
+    "subject": "Expense claim approved",
+    "body": "Hi Riya,\n\nYour expense claim EXP-2291 (INR 3,450, customer visit taxis) has been approved and will be paid with the November salary.\n\nFinance",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "riya-009",
+    "from": "rohan@acme.local",
+    "to": [
+      "riya@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-05T19:30:00+05:30",
+    "subject": "All-hands on Friday",
+    "body": "Team,\n\nOur Q4 all-hands is on Friday 13 November at 17:00 in the cafeteria. We will share Q3 results and the 2027 roadmap. Snacks provided.\n\nRohan",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "riya-010",
+    "from": "pooja@acme.local",
+    "to": [
+      "riya@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-06T10:05:00+05:30",
+    "subject": "Usability test participants",
+    "body": "Hi Riya,\n\nI need 5 customers for the Atlas usability test on 25 November. Could you ask Ananya for names of active Team-plan users?\n\nPooja",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "riya-011",
+    "from": "sameer@acme.local",
+    "to": [
+      "riya@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-06T15:48:00+05:30",
+    "subject": "API for team updates",
+    "body": "Hi Riya,\n\nThe team-updates feed needs a new API endpoint. I estimate 4 days of work. Should I start this sprint or next?\n\nSameer",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "riya-012",
+    "from": "hr@acme.local",
+    "to": [
+      "riya@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-07T09:00:00+05:30",
+    "subject": "Learning budget reminder",
+    "body": "Hi Riya,\n\nYou have INR 18,000 of your 2026 learning budget left. Unused budget does not carry forward, so submit requests before 31 December.\n\nPeople Team",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "riya-013",
+    "from": "kabir@acme.local",
+    "to": [
+      "riya@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-07T11:45:00+05:30",
+    "subject": "Re: Customer asking about Business plan SSO",
+    "body": "Thanks Riya, I'll tell them SSO supports SAML and works with Azure AD. They also asked about the audit log export format. Is it CSV?\n\nKabir",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "riya-014",
+    "from": "meera@acme.local",
+    "to": [
+      "riya@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-09T10:20:00+05:30",
+    "subject": "Can you review the Atlas PRD?",
+    "body": "Hi Riya,\n\nCan you review section 3 of the Atlas PRD (team updates) by Tuesday? I left comments on the open questions.\n\nMeera",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "riya-015",
+    "from": "security@acme.local",
+    "to": [
+      "riya@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-09T12:00:00+05:30",
+    "subject": "Phishing awareness",
+    "body": "Hello,\n\nWe are seeing emails pretending to be from IT asking staff to 'verify' their passwords. IT will never ask for your password. Report suspicious emails to security@acme.local.\n\nSecurity",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "riya-016",
+    "from": "ananya@acme.local",
+    "to": [
+      "riya@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-09T16:30:00+05:30",
+    "subject": "Customer quote for Atlas launch post",
+    "body": "Hi Riya,\n\nBrightPath's ops head is happy to give a quote for the Atlas launch blog post. Want me to set up a call?\n\nAnanya",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "riya-017",
+    "from": "neha@acme.local",
+    "to": [
+      "riya@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-10T09:40:00+05:30",
+    "subject": "Q4 budget for usability tests",
+    "body": "Hi Riya,\n\nThe Q4 budget for usability tests is INR 25,000. Gift vouchers for participants should be INR 1,500 each.\n\nNeha",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "riya-018",
+    "from": "pooja@acme.local",
+    "to": [
+      "riya@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-10T11:15:00+05:30",
+    "subject": "Icons for dark mode",
+    "body": "Hi Riya,\n\nThe dark mode icon set is ready. Three icons still look too dim; I'll fix them by Wednesday.\n\nPooja",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "riya-019",
+    "from": "meera@acme.local",
+    "to": [
+      "riya@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-10T13:05:00+05:30",
+    "subject": "Quick question",
+    "body": "Riya, do we need analytics events for the new home screen in the first release, or can they wait?\n\nMeera",
+    "labels": [
+      "inbox"
+    ]
+  },
+  {
+    "id": "riya-020",
+    "from": "rohan@acme.local",
+    "to": [
+      "riya@acme.local"
+    ],
+    "cc": [],
+    "date": "2026-11-10T15:50:00+05:30",
+    "subject": "Atlas board update",
+    "body": "Riya,\n\nPlease send me a 5-line Atlas status update by Thursday evening for the board meeting.\n\nRohan",
+    "labels": [
+      "inbox"
+    ]
+  }
+]
