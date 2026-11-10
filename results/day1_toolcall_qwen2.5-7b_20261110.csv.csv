@@ -1,0 +1,11 @@
+#,prompt,expected,got,pass,reason,seconds
+1,What's the weather in Chandigarh right now?,get_weather,get_weather({'city': 'Chandigarh'}),True,ok,0.92
+2,Is it raining in Delhi today?,get_weather,get_weather({'city': 'Delhi'}),True,ok,0.57
+3,Mumbai mein aaj mausam kaisa hai?,get_weather,get_weather({'city': 'Mumbai'}),True,ok,0.59
+4,Find our leave policy in the company docs.,search_docs,search_docs({'query': 'leave policy'}),True,ok,0.55
+5,What does the product FAQ say about refunds?,search_docs,search_docs({'query': 'refunds product FAQ'}),True,ok,0.61
+6,Search the handbook for the work from home rules.,search_docs,search_docs({'query': 'work from home rules'}),True,ok,0.62
+7,Email meera@acme.local and tell her the report is ready.,send_email,"send_email({'to': 'meera@acme.local', 'subject': 'Your report is ready', 'body': 'Hello Meera,\n\nJust wanted to inform you that your report is now ready. Please find it attached.\n\nBest regards,\n[Your Name]'})",True,ok,1.94
+8,Send arjun@acme.local an email with subject 'Meeting' saying the meeting moved to 4 pm.,send_email,"send_email({'to': 'arjun@acme.local', 'subject': 'Meeting', 'body': 'The meeting has been moved to 4 pm.'})",True,ok,1.26
+9,What is 15 multiplied by 4?,no tool,(answered in text),True,no tool expected,0.45
+10,Say hello in Punjabi.,no tool,(answered in text),True,no tool expected,2.03
