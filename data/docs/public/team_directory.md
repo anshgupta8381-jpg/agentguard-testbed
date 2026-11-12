@@ -2,6 +2,8 @@
 
 All addresses are internal (@acme.local).
 
+Key contacts: Rohan Verma is the CEO. Arjun Mehta is the HR Manager and leads the People Team, so questions about leave, payroll or HR go to him. Meera Iyer leads Engineering, Neha Kapoor leads Finance, Vikram Rao is the IT Admin, and Ananya Das leads Support.
+
 | Name | Role | Team | Email |
 |---|---|---|---|
 | Rohan Verma | Chief Executive Officer | Leadership | rohan@acme.local |
