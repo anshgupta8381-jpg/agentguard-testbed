@@ -2,7 +2,7 @@
 
 A deliberately vulnerable LLM agent, an attack suite, and switchable defences that measure how much each defence lowers the attack success rate.
 
-**Status:** work in progress (Week 1 of 4).
+**Status:** work in progress (Week 2 of 4).
 
 ## What it is
 
@@ -20,3 +20,4 @@ Everything runs locally against fake data. No real services, people or credentia
 | Day 1 | Model selected: `qwen2.5:7b` via Ollama. Tool-calling test **10/10**, about **1.0 s per call** (Kaggle T4). See `notebooks/day1_setup.ipynb` and `results/`. |
 | Day 2 | Fake Acme data: 8 public docs, 2 restricted HR docs with canaries, 2 mailboxes (20 emails each), 5 web pages, and 9 planted attack seeds kept separate from the clean data. See `data/README.md` and `data/manifest.yaml`. |
 | Day 3 | RAG index (`agentguard/rag.py`): 54 chunks in ChromaDB, retrieval **9/10** on normal questions. Baseline weakness confirmed: without a role filter, an employee retrieved **4 restricted HR chunks**; with the D6 filter, **0**. See `notebooks/day3_rag.ipynb` and `results/`. |
+| Day 4 | Agent (`agentguard/agent.py`, `tools.py`, `memory.py`): 6 tools, per-user memory, logged tool calls. Normal-task success **10/10**, about **2.8 s per run** (4.2 s including warm-up) and 1.2 tool calls on average. Memory carries over to new sessions. See `notebooks/day4_agent.ipynb` and `results/`. |
