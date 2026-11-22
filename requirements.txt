@@ -1,5 +1,6 @@
 ollama>=0.4
 chromadb>=1.0,<2
+mcp>=2.3,<3
 pyyaml
 pandas
 beautifulsoup4

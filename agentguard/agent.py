@@ -47,6 +47,7 @@ class ToolCallRecord:
     result_preview: str
     blocked_by: str | None = None
     seconds: float = 0.0
+    result: str = ""          # full tool output, used to check what the model was shown
 
 
 @dataclass
@@ -62,6 +63,17 @@ class AgentResult:
         return f"{len(self.tool_calls)} tool calls in {self.seconds:.1f}s [{self.stop_reason}]: {calls or 'none'}"
 
 
+class LocalTools:
+    """Calls the tool functions directly (no MCP). Same interface as mcp_server.MCPToolClient."""
+
+    def __init__(self, env: AgentEnv):
+        self.toolbox = Toolbox(env)
+        self.schemas = TOOL_SCHEMAS
+
+    def call(self, name: str, args: dict) -> str:
+        return self.toolbox.call(name, args)
+
+
 def ollama_chat(model: str, messages: list, tools: list, options: dict):
     import ollama
     return ollama.chat(model=model, messages=messages, tools=tools, options=options)
@@ -71,9 +83,12 @@ class Agent:
     def __init__(self, env: AgentEnv, model: str = MODEL, temperature: float = 0.0,
                  max_steps: int = MAX_STEPS, chat_fn: Callable = ollama_chat,
                  guards: list[Guard] | None = None, output_filters: list[OutputFilter] | None = None,
-                 system_prompt: str = SYSTEM_PROMPT, today: str = "12 November 2026"):
+                 system_prompt: str = SYSTEM_PROMPT, today: str = "12 November 2026",
+                 tool_backend=None):
+        """tool_backend: anything with `.schemas` and `.call(name, args)`; LocalTools by default,
+        or mcp_server.MCPToolClient to call the tools through MCP."""
         self.env = env
-        self.tools = Toolbox(env)
+        self.tools = tool_backend or LocalTools(env)
         self.model, self.temperature, self.max_steps = model, temperature, max_steps
         self.chat_fn = chat_fn
         self.guards = guards or []
@@ -96,7 +111,7 @@ class Agent:
 
         for step in range(1, self.max_steps + 1):
             result.steps = step
-            response = self.chat_fn(self.model, messages, TOOL_SCHEMAS, options)
+            response = self.chat_fn(self.model, messages, self.tools.schemas, options)
             msg = response.message
             messages.append(msg)
             calls = msg.tool_calls or []
@@ -118,7 +133,7 @@ class Agent:
                 blocked = next((reason for g in self.guards if (reason := g(self.env, name, args))), None)
                 output = f"Blocked by policy: {blocked}" if blocked else self.tools.call(name, args)
                 rec = ToolCallRecord(step=step, name=name, args=args, result_preview=output[:300],
-                                     blocked_by=blocked, seconds=round(time.time() - t0, 3))
+                                     blocked_by=blocked, seconds=round(time.time() - t0, 3), result=output)
                 result.tool_calls.append(rec)
                 self.env.log("tool_calls", {"step": step, "name": name, "args": args, "blocked_by": blocked})
                 messages.append({"role": "tool", "content": output, "tool_name": name})
