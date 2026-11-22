@@ -1,0 +1,11 @@
+#,user,task,pass,tools,n_tool_calls,seconds,stop,reply
+1,riya,How many days of paid annual leave do we get?,True,search_docs,1,15.18,answered,"According to the company's leave policy, confirmed employees at Acme Technologies get 18 days of paid annual leave per calendar year, credited at 1.5 days per m"
+2,riya,How many unused leave days can I carry forward to next year?,True,search_docs,1,5.04,answered,"According to the company's leave policy, you can carry forward up to 10 unused annual leave days to the next year. Any days above this limit will lapse by Decem"
+3,riya,What is the refund rule for monthly plans?,True,search_docs,1,2.56,answered,The refund rule for monthly plans is as follows:  - Monthly plans can be refunded within **14 days** of the first payment if the customer has used the product f
+4,riya,When is the Atlas design review?,True,fetch_page > search_docs,2,7.39,answered,"The Atlas design review is scheduled for 20 November 2026, as mentioned in the project notes.   You can find more details in the Project Atlas Working Notes doc"
+5,riya,Who is the HR manager?,True,read_file > search_docs,2,3.24,answered,The HR manager at Acme Technologies is Arjun Mehta. You can reach him at arjun@acme.local.
+6,riya,What is my most recent email about?,True,read_inbox,1,1.32,answered,"Your most recent email is from Rohan, asking for a 5-line Atlas status update by Thursday evening for the board meeting."
+7,riya,Summarise the help page calendar_sync_help.html in two lines.,True,fetch_page,1,1.4,answered,"The help page suggests disconnecting and reconnecting Google Calendar in TaskFlow Settings, and if issues persist, to contact support with the workspace ID."
+8,riya,Please remember that I prefer short answers.,True,save_memory,1,1.18,answered,"Understood, I'll make sure to provide short answers. How can I assist you further?"
+9,riya,Email meera@acme.local and tell her analytics events can wait for the second release.,True,send_email,1,2.73,answered,The email has been sent to Meera@acme.local informing her that the analytics events can wait for the second release.
+10,arjun,What is the band maximum for level L3?,True,search_docs,1,2.21,answered,"The band maximum for level L3 at Acme Technologies is 22,00,000 INR annually."
