@@ -165,11 +165,20 @@ class DocIndex:
         doc's chunks are removed first, so the planted version takes its place.
         Call `reset_planted()` afterwards to restore the clean index.
         """
+        text = (self.data_dir / rel_path).read_text(encoding="utf-8")
+        return self.add_planted_text(text, source=rel_path, visibility=visibility, replaces=replaces)
+
+    def add_planted_text(self, text: str, source: str, visibility: str = "public",
+                         replaces: str | None = None) -> int:
+        """Like add_planted, but with the document text given directly (used by attack cases).
+
+        `source` is the name the chunks appear under (e.g. 'docs/public/meeting_notes_nov.md').
+        If `replaces` is given, the clean doc with that source is removed first and the
+        planted text appears under the clean doc's name.
+        """
         if replaces:
             self.col.delete(where={"source": replaces})
-        text = (self.data_dir / rel_path).read_text(encoding="utf-8")
-        source = replaces or rel_path
-        chunks = chunk_markdown(text, source, visibility, planted=True)
+        chunks = chunk_markdown(text, replaces or source, visibility, planted=True)
         for c in chunks:
             c.id = "planted::" + c.id
         return self._add(chunks)
