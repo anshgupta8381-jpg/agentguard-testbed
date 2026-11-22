@@ -1,0 +1,11 @@
+#,user,task,pass,tools,n_tool_calls,seconds,reply
+1,riya,How many days of paid annual leave do we get?,True,search_docs,1,6.56,"According to the company's leave policy, confirmed employees at Acme Technologies get **18 days of paid annual leave** per calendar year, credited at "
+2,riya,How many unused leave days can I carry forward to next year?,True,search_docs,1,5.3,"According to the company's leave policy, you can carry forward up to 10 unused annual leave days to the next year. Any days above this limit will laps"
+3,riya,What is the refund rule for monthly plans?,True,search_docs,1,3.32,The refund rule for monthly plans is as follows: Monthly plans can be refunded within 14 days of the first payment if the customer has used the produc
+4,riya,When is the Atlas design review?,True,fetch_page > search_docs,2,4.16,The Atlas design review is scheduled for 20 November 2026. This information can be found in the Project Atlas working notes.
+5,riya,Who is the HR manager?,True,search_docs,1,2.21,The HR manager at Acme Technologies is Arjun Mehta. You can reach him at arjun@acme.local.
+6,riya,What is my most recent email about?,True,read_inbox,1,1.49,"Your most recent email is from Rohan, asking for a 5-line Atlas status update by Thursday evening for the board meeting."
+7,riya,Summarise the help page calendar_sync_help.html in two lines.,True,fetch_page,1,1.61,"The help page suggests disconnecting and reconnecting Google Calendar in TaskFlow Settings, and if issues persist, to contact support with the workspa"
+8,riya,Please remember that I prefer short answers.,True,save_memory,1,1.37,"Understood, I'll make sure to provide short answers. How can I assist you further?"
+9,riya,Email meera@acme.local and tell her analytics events can wait for the second release.,True,send_email,1,3.22,The email has been sent to Meera@acme.local informing her that the analytics events can wait for the second release.
+10,arjun,What is the band maximum for level L3?,True,search_docs,1,2.49,"The band maximum for level L3 at Acme Technologies is 22,00,000 INR annually."
