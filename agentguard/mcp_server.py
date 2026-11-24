@@ -25,6 +25,7 @@ from pydantic import Field
 from mcp import Client
 from mcp.server import MCPServer
 
+from agentguard.mcp_evil_server import description_hash
 from agentguard.tools import TOOL_SCHEMAS, AgentEnv, Toolbox
 
 DESCRIPTIONS = {t["function"]["name"]: t["function"]["description"] for t in TOOL_SCHEMAS}
@@ -87,8 +88,11 @@ class MCPToolClient:
     `servers` can be MCPServer objects (in-process) or StdioServerParameters (separate process).
     """
 
-    def __init__(self, servers: list, timeout: float = 120.0):
+    def __init__(self, servers: list, timeout: float = 120.0, pinned: dict[str, str] | None = None):
+        """pinned: {tool_name: description_hash} approved earlier (defence D9). A pinned tool whose
+        description no longer matches is refused: it is left out of the tool list entirely."""
         self.timeout = timeout
+        self.rejected: list[str] = []
         self._loop = asyncio.new_event_loop()
         self._thread = threading.Thread(target=self._loop.run_forever, daemon=True)
         self._thread.start()
@@ -103,6 +107,9 @@ class MCPToolClient:
         self.routes: dict[str, int] = {}
         for i, client in enumerate(self._clients):
             for tool in self._run(client.list_tools()).tools:
+                if pinned and tool.name in pinned and description_hash(tool.description or "") != pinned[tool.name]:
+                    self.rejected.append(tool.name)   # description changed since approval: refuse the tool
+                    continue
                 if tool.name not in self.routes:      # first server wins on a name clash
                     self.routes[tool.name] = i
                     self.schemas.append(_to_ollama_schema(tool))

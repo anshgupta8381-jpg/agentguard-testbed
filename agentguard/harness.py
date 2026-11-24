@@ -46,7 +46,14 @@ class Config:
     guards: list = field(default_factory=list)       # D4, D5, D8, D9, D10 add tool-call guards
     output_filters: list = field(default_factory=list)   # D7
     max_steps: int = 25
-    extras: dict = field(default_factory=dict)       # room for D2/D3 settings
+    result_transforms: list = field(default_factory=list)   # D2 spotlighting, D3 input scanner
+    prompt_transforms: list = field(default_factory=list)   # D3 also scans text the user pastes
+    schema_transforms: list = field(default_factory=list)   # D3 also scans MCP tool descriptions
+    max_tool_calls: int | None = None                # D10 budget
+    max_seconds: float | None = None                 # D10 budget
+    pin_mcp: bool = False                            # D9: refuse MCP tools whose description changed since approval
+    defences: list = field(default_factory=list)     # e.g. ["D1", "D2"], for reporting
+    extras: dict = field(default_factory=dict)
 
 
 def load_cases(path: str | Path = "attacks/cases.yaml", ids: list[str] | None = None,
@@ -162,11 +169,17 @@ class Harness:
                 touched = self._apply_plants(case, env, run_dir) if planting else False
                 try:
                     servers = [build_server(env)] + ([build_evil_server(mcp["runtime"])] if mcp else [])
-                    with MCPToolClient(servers) as tools:
+                    pinned = {"get_exchange_rate": description_hash(mcp["approved"])} if (mcp and config.pin_mcp) else None
+                    with MCPToolClient(servers, pinned=pinned) as tools:
+                        for transform in config.schema_transforms:
+                            tools.schemas = transform(tools.schemas)
                         schemas = tools.schemas
                         agent = Agent(env, model=self.model, temperature=temperature, max_steps=config.max_steps,
                                       chat_fn=self.chat_fn, guards=config.guards, output_filters=config.output_filters,
-                                      system_prompt=config.system_prompt, tool_backend=tools)
+                                      system_prompt=config.system_prompt, tool_backend=tools,
+                                      result_transforms=config.result_transforms,
+                                      prompt_transforms=config.prompt_transforms,
+                                      max_tool_calls=config.max_tool_calls, max_seconds=config.max_seconds)
                         res = agent.run(prompt)
                 finally:
                     if touched:
@@ -174,7 +187,7 @@ class Harness:
                 ev = Evidence.from_run(res, env)
                 evidences.append(ev)
                 sessions.append({"session": s, "prompt": prompt, "reply": res.reply, "stop_reason": res.stop_reason,
-                                 "seconds": res.seconds,
+                                 "seconds": res.seconds, "mcp_rejected": getattr(tools, "rejected", []),
                                  "tool_calls": [{"step": c.step, "name": c.name, "args": c.args,
                                                  "blocked_by": c.blocked_by, "result": (c.result or "")[:3000]}
                                                 for c in res.tool_calls]})
@@ -262,5 +275,5 @@ class Harness:
                         "side_effect_rate": round(sum(bool(r["side_effects"]) for r in rs) / len(rs), 3),
                         "avg_tool_calls": round(sum(r["n_tool_calls"] for r in rs) / len(rs), 2),
                         "avg_seconds": round(sum(r["seconds"] for r in rs) / len(rs), 2),
-                        "errors": sum(1 for r in rs if r["stop_reason"] not in ("answered", "max_steps"))})
+                        "errors": sum(1 for r in rs if r["stop_reason"] not in ("answered", "max_steps", "budget"))})
         return out

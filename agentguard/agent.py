@@ -37,6 +37,10 @@ Today's date is {today}.
 Guard = Callable[[AgentEnv, str, dict], "str | None"]
 # An output filter takes the final reply and returns a (possibly changed) reply.
 OutputFilter = Callable[[AgentEnv, str], str]
+# A result transform changes a tool's output before the model sees it (defences D2 and D3).
+ResultTransform = Callable[[AgentEnv, str, dict, str], str]
+# A prompt transform changes the user's message before the model sees it (D3 scans pasted text).
+PromptTransform = Callable[[AgentEnv, str], str]
 
 
 @dataclass
@@ -56,7 +60,7 @@ class AgentResult:
     tool_calls: list[ToolCallRecord] = field(default_factory=list)
     steps: int = 0
     seconds: float = 0.0
-    stop_reason: str = "answered"   # "answered" or "max_steps"
+    stop_reason: str = "answered"   # "answered", "max_steps" or "budget"
 
     def summary(self) -> str:
         calls = ", ".join(f"{c.name}({json.dumps(c.args, ensure_ascii=False)[:60]})" for c in self.tool_calls)
@@ -84,9 +88,12 @@ class Agent:
                  max_steps: int = MAX_STEPS, chat_fn: Callable = ollama_chat,
                  guards: list[Guard] | None = None, output_filters: list[OutputFilter] | None = None,
                  system_prompt: str = SYSTEM_PROMPT, today: str = "12 November 2026",
-                 tool_backend=None):
+                 tool_backend=None, result_transforms: list[ResultTransform] | None = None,
+                 max_tool_calls: int | None = None, max_seconds: float | None = None,
+                 prompt_transforms: list[PromptTransform] | None = None):
         """tool_backend: anything with `.schemas` and `.call(name, args)`; LocalTools by default,
-        or mcp_server.MCPToolClient to call the tools through MCP."""
+        or mcp_server.MCPToolClient to call the tools through MCP.
+        max_tool_calls / max_seconds: a budget per task (defence D10); None means no budget."""
         self.env = env
         self.tools = tool_backend or LocalTools(env)
         self.model, self.temperature, self.max_steps = model, temperature, max_steps
@@ -94,6 +101,9 @@ class Agent:
         self.guards = guards or []
         self.output_filters = output_filters or []
         self.system_prompt, self.today = system_prompt, today
+        self.result_transforms = result_transforms or []
+        self.max_tool_calls, self.max_seconds = max_tool_calls, max_seconds
+        self.prompt_transforms = prompt_transforms or []
 
     def build_system_prompt(self) -> str:
         facts = self.env.memory.list(self.env.user)
@@ -104,10 +114,15 @@ class Agent:
 
     def run(self, user_message: str) -> AgentResult:
         t_start = time.time()
+        self.env.current_prompt = user_message      # guards (D5, D8) compare actions with the user's real request
+        model_message = user_message
+        for transform in self.prompt_transforms:
+            model_message = transform(self.env, model_message)
         messages = [{"role": "system", "content": self.build_system_prompt()},
-                    {"role": "user", "content": user_message}]
+                    {"role": "user", "content": model_message}]
         result = AgentResult(reply="")
         options = {"temperature": self.temperature}
+        over_budget = False
 
         for step in range(1, self.max_steps + 1):
             result.steps = step
@@ -122,6 +137,10 @@ class Agent:
                 result.reply = reply
                 break
             for call in calls:
+                if (self.max_tool_calls is not None and len(result.tool_calls) >= self.max_tool_calls) or \
+                        (self.max_seconds is not None and time.time() - t_start > self.max_seconds):
+                    over_budget = True
+                    break
                 name, args = call.function.name, call.function.arguments
                 if isinstance(args, str):  # some models return arguments as a JSON string
                     try:
@@ -132,11 +151,18 @@ class Agent:
                 t0 = time.time()
                 blocked = next((reason for g in self.guards if (reason := g(self.env, name, args))), None)
                 output = f"Blocked by policy: {blocked}" if blocked else self.tools.call(name, args)
+                if not blocked:
+                    for transform in self.result_transforms:
+                        output = transform(self.env, name, args, output)
                 rec = ToolCallRecord(step=step, name=name, args=args, result_preview=output[:300],
                                      blocked_by=blocked, seconds=round(time.time() - t0, 3), result=output)
                 result.tool_calls.append(rec)
                 self.env.log("tool_calls", {"step": step, "name": name, "args": args, "blocked_by": blocked})
                 messages.append({"role": "tool", "content": output, "tool_name": name})
+            if over_budget:
+                result.stop_reason = "budget"
+                result.reply = "(stopped: tool-call or time budget reached)"
+                break
         else:
             result.stop_reason = "max_steps"
             result.reply = "(stopped: step limit reached)"
