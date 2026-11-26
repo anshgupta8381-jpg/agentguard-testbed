@@ -1,0 +1,15 @@
+category,name,baseline,prompt_only,full
+A1,Pasted text,0.4,0.233,0.133
+A2,Doc injection,0.6,0.639,0.0
+A3,Email,0.117,0.0,0.0
+A4,Web page,0.578,0.519,0.0
+A5,System prompt,0.35,0.292,0.0
+A6,Restricted data,0.84,0.7,0.0
+A7,Unsafe tool args,0.6,0.042,0.0
+A8,KB poisoning,0.7,0.792,0.833
+A9,Memory,0.0,0.0,0.0
+A10,MCP poisoning,0.125,0.0,0.042
+A11,Loops,0.0,0.0,0.0
+control,Normal tasks (utility),0.827,0.811,0.822
+ALL_ATTACKS,All 100 attacks,0.404,0.307,0.083
+CASES_WITH_ANY_SUCCESS,Attack cases that worked at least once (of 100),54.0,38.0,11.0
