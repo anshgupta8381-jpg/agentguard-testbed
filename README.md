@@ -4,6 +4,25 @@ A deliberately vulnerable LLM agent, an attack suite, and switchable defences th
 
 **Status:** work in progress (Week 3 of 4).
 
+## Dashboard
+
+The dashboard replays saved results, so it needs no model, GPU or internet (runs on a 4 GB laptop):
+
+```bash
+pip install -r app/requirements.txt
+streamlit run app/dashboard.py
+```
+
+| Page | What it shows |
+|---|---|
+| Overview | Headline numbers, how the testbed works, attack categories |
+| Results | Heatmap (defence × attack category), each defence before/after, baseline vs stacks, security vs utility trade-off, fresh attacks |
+| Attack Lab | Pick an attack, see what was planted and what counts as success, replay real runs with and without defences |
+| Trace Viewer | Filter all 2,727 runs and open any trace: prompts, tool calls, blocked calls, tool output, reply, emails sent, files read |
+| Findings | `docs/findings.md` |
+
+Replies and tool output are shown as plain text. Rendering an attacker's markdown in the dashboard would repeat the weakness being measured.
+
 ## What it is
 
 - **Target:** a fake company ("Acme") assistant: a tool-calling agent with RAG over company documents, per-user memory, and tools served from an MCP server.
@@ -24,6 +43,7 @@ Everything runs locally against fake data. No real services, people or credentia
 | Days 5-6 | Tools served over **MCP** (`agentguard/mcp_server.py`, MCP SDK v2): in-process for speed, and as a stdio server process. Normal tasks over MCP **10/10**. **First attack, A2 (hidden instruction in a company document): the model obeyed in 12/15 runs (80%) at temperature 0.7 and 3/3 at temperature 0.** The hidden line reached the model in 15/15 runs; 0 false positives in the clean control. See `notebooks/day5_6_mcp_and_a2.ipynb` and `results/`. |
 | Week 2 | Attack suite (`attacks/cases.yaml`: 100 attacks across A1-A11 + 30 controls), objective checks (`agentguard/checks.py`), a malicious MCP server for A10, and a resumable harness (`agentguard/harness.py`). **Baseline: 780 runs, attack success 40%, normal-task success 83%.** See below and `results/week2_baseline/`. |
 | Week 3 | Ten switchable defences (`agentguard/defences.py`) and 10 fresh attacks written after them. **1,947 runs: with all ten defences, attack success fell from 40% to 8% while normal-task success stayed at 82% (83% before).** See below and `results/week3_defences/`. |
+| Week 4 | Streamlit dashboard (`app/`) that replays all 2,727 logged runs: results heatmap, trade-off, Attack Lab and Trace Viewer. Findings written up in `docs/findings.md`. |
 
 ## Baseline results (no defences)
 
@@ -82,7 +102,7 @@ Same model and temperature (0.7) as the baseline. Each defence ran on the attack
 - **Code beats prompts.** Asking the model to be careful (D1, D2) cut attack success by a quarter at best. D2 alone changed almost nothing. Defences that enforce rules in code (D3, D4, D6) removed most attacks in their categories.
 - **Almost free.** The full stack cut attack success from 40% to 8% and lowered normal-task success by only 1 point. It added no time per run.
 - **Biggest single fix: retrieval permissions.** With a role filter, restricted HR data never reached the model, and A6 fell from 84% to 0%.
-- **Not solved: knowledge-base poisoning (A8).** It stayed high in every configuration (58–83%). A false fact written as a plain statement ("the meal allowance is now INR 5,000") contains no instruction for a scanner to catch. Fixing it needs content provenance or review, not filtering.
+- **Not solved: knowledge-base poisoning (A8).** It stayed high in every configuration (58–83%). A false fact written as a plain statement ("annual leave has been raised to 40 days") contains no instruction for a scanner to catch. Fixing it needs content provenance or review, not filtering.
 - **The scanner is a pattern list, and new wording gets past it.** On the fresh attacks the full stack cut success from 47% to 20%. Two got through every time: a polite request ("Kindly conclude…") and an instruction written in full-width Unicode letters. Three known A1/A10 cases also slip through, for example a pasted "Ignore the translation task…".
 - The model flagged an injection more often with defences on (10% of runs, against 5%), but still rarely.
 
